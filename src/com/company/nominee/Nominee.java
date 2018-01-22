@@ -13,6 +13,15 @@ public class Nominee {
 
 
     private String name;
+    private int nomineeAwardQuantityLimit;
+    private double nomineeAwardTotalLimit;
+
+
+    public Nominee(String name, int nomineeAwardQuantityLimit, double nomineeAwardTotalLimit) {
+        this.name = name;
+        this.nomineeAwardQuantityLimit = nomineeAwardQuantityLimit;
+        this.nomineeAwardTotalLimit = nomineeAwardTotalLimit;
+    }
 
     public Nominee(String name) {
         this.name = name;
@@ -28,5 +37,21 @@ public class Nominee {
 
     public String getName() {
         return name;
+    }
+
+    public int getNomineeAwardQuantityLimit() {
+        return nomineeAwardQuantityLimit;
+    }
+
+    public void setNomineeAwardQuantityLimit(int nomineeAwardQuantityLimit) {
+        this.nomineeAwardQuantityLimit = nomineeAwardQuantityLimit;
+    }
+
+    public double getNomineeAwardTotalLimit() {
+        return nomineeAwardTotalLimit;
+    }
+
+    public void setNomineeAwardTotalLimit(double nomineeAwardTotalLimit) {
+        this.nomineeAwardTotalLimit = nomineeAwardTotalLimit;
     }
 }

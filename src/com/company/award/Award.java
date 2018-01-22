@@ -30,7 +30,5 @@ public class Award {
         return soli;
     }
 
-    public void setSoli(double soli) {
-        this.soli = soli;
-    }
+
 }
