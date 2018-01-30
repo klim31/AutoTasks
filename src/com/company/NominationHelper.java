@@ -51,9 +51,10 @@ public class NominationHelper {
 
     private void nominateNominatorAwardTotal(Nominee nominee, Nominator nominator, Award award) {
         double nominatorCurrentAwardsTotal = 0;
-        while ((nominatorCurrentAwardsTotal + award.getValue()) < nominator.getNominatorAwardTotalLimit()) {
+        while ((nominatorCurrentAwardsTotal < nominator.getNominatorAwardTotalLimit())) {
             nominator.nominate(nominee, award);
             nominatorCurrentAwardsTotal += award.getValue();
+            nominator.isLimitReached(nominatorCurrentAwardsTotal,nominator.getNominatorAwardTotalLimit());
         }
         notificator("nominateNominatorAwardTotal");
     }
@@ -64,6 +65,7 @@ public class NominationHelper {
         do {
             nominator.nominate(nominee, award);
             nominatorCurrentAwardsAmount++;
+            nominator.isLimitReached(Double.valueOf(nominatorCurrentAwardsAmount),Double.valueOf(nominator.getNominatorAwardQuantityLimit()));
         }
         while (nominatorCurrentAwardsAmount < nominator.getNominatorAwardQuantityLimit());
         notificator("nominateNominatorAwardQuantity");
@@ -79,6 +81,7 @@ public class NominationHelper {
                 default:
                     nominator.nominate(nominee, award);
                     nomineeCurrentAwardsTotal += award.getValue();
+                    nominee.isLimitReached(nomineeCurrentAwardsTotal,350);
                     nominateNomineeAwardTotal(nominee, nominator, award);
             }
             return;
@@ -91,12 +94,12 @@ public class NominationHelper {
         for (int i = 0; nomineeCurrentAwardsAmount < nominee.getNomineeAwardQuantityLimit(); i++) {
             nominator.nominate(nominee, award);
             nomineeCurrentAwardsAmount++;
+            nominee.isLimitReached(nomineeCurrentAwardsAmount,nominee.getNomineeAwardQuantityLimit());
         }
         notificator("nominateNomineeAwardQuantity");
     }
 
     public void nominationInitiator(Nominee nominee, Nominator nominator, Award award) {
-        nominateWithLimits(nominee, nominator, award);
         nominateNominatorAwardTotal(nominee, nominator, award);
         nominateNominatorAwardQuantity(nominee, nominator, award);
         nominateNomineeAwardTotal(nominee, nominator, award);

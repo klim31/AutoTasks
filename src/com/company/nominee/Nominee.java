@@ -67,6 +67,17 @@ public class Nominee extends Person{
     }
 
     @Override
+    public boolean isLimitReached(double averageValue, double limitValue) {
+        if (averageValue >= limitValue){
+            System.out.println("Limit: "+ limitValue + " is reached!");
+            return true;
+        }
+        else
+            System.out.println("Limit is not reached yet: "+ averageValue);
+        return false;
+    }
+
+    @Override
     public String toString() {
         return   super.toString() + "Nominee{" +
                 "name='" + name + '\'' +

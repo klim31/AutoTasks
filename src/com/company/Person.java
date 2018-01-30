@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Klim_Starykau on 1/22/2018.
  */
-public class Person {
+public abstract class Person implements OperationsWithLimit{
 
     private int userId;
     private String clientName;
@@ -16,15 +16,11 @@ public class Person {
         this.userPrivilege = userPrivilege;
     }
 
-
     public Person() {
     }
 
-    ;
-
     public void AssingToClient(String newClientName) {
-        this.clientName = newClientName;
-        System.out.println(this);
+
     }
 
     @Override
@@ -36,4 +32,8 @@ public class Person {
                 '}';
     }
 
+    @Override
+    public boolean isLimitReached(double averageValue, double limitValue) {
+        return false;
+    }
 }
