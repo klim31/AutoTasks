@@ -29,7 +29,6 @@ public class Nominee extends Person{
 
     @Override
     public void AssingToClient(String newClientName) {
-        super.AssingToClient(newClientName);
         this.nomineeBased = "NomineeBased";
         System.out.println(this);
     }

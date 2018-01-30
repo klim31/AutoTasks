@@ -20,8 +20,6 @@ public class Person {
     public Person() {
     }
 
-    ;
-
     public void AssingToClient(String newClientName) {
         this.clientName = newClientName;
         System.out.println(this);

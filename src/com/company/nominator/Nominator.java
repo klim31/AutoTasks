@@ -35,7 +35,6 @@ public class Nominator extends Person {
 
     @Override
     public void AssingToClient(String newClientName) {
-        super.AssingToClient(newClientName);
         this.nominatorBased = "NominatorBased";
         System.out.println(this);
     }
