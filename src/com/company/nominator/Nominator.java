@@ -13,7 +13,6 @@ public class Nominator extends Person {
         System.out.println("nominator class init");
     }
 
-    private String name;
     private String nominatorPrivilege = "NominatorPrivilege";
     private String nominatorBased;
 
@@ -38,7 +37,7 @@ public class Nominator extends Person {
     }
 
 
-    public void nominate(Nominee nominee, Award award) {
+    public void nominate(Person nominee, Award award) {
         System.out.println("nominee = [" + nominee.getName() + "], given award = [" + award.getValue() + "]");
         nominee.receiveAward(award);
     }

@@ -14,6 +14,7 @@ public abstract class Person implements OperationsWithLimit{
     protected double nomineeAwardTotalLimit;
     protected int nominatorAwardQuantityLimit;
     protected double nominatorAwardTotalLimit;
+    protected String name;
 
 
     protected Person(int userId, String clientName, String userPrivilege) {
@@ -57,5 +58,9 @@ public abstract class Person implements OperationsWithLimit{
     }
     public double getNominatorAwardTotalLimit() {
         return nominatorAwardTotalLimit;
+    }
+
+    public String getName() {
+        return name;
     }
 }
