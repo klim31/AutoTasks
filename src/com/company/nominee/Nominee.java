@@ -13,8 +13,6 @@ public class Nominee extends Person{
     }
 
     private String name;
-    private int nomineeAwardQuantityLimit;
-    private double nomineeAwardTotalLimit;
     private String nomineePrivilege = "NomineePrivilege";
     private String nomineeBased;
 
@@ -29,8 +27,7 @@ public class Nominee extends Person{
 
     @Override
     public void AssingToClient(String newClientName) {
-        super.AssingToClient(newClientName);
-        this.nomineeBased = "NomineeBased";
+        this.nomineeBased = "NomineeBased - Qlik";
         System.out.println(this);
     }
 

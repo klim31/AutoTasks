@@ -14,8 +14,6 @@ public class Nominator extends Person {
     }
 
     private String name;
-    private int nominatorAwardQuantityLimit;
-    private double nominatorAwardTotalLimit;
     private String nominatorPrivilege = "NominatorPrivilege";
     private String nominatorBased;
 
@@ -34,9 +32,8 @@ public class Nominator extends Person {
     }
 
     @Override
-    public void AssingToClient(String newClientName) {
-        super.AssingToClient(newClientName);
-        this.nominatorBased = "NominatorBased";
+    public void AssingToClient(int newClientId) {
+        this.nominatorBased = "NominatorBased - 1";
         System.out.println(this);
     }
 

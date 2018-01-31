@@ -1,8 +1,6 @@
 package com.company;
 
 import com.company.award.Award;
-import com.company.nominator.Nominator;
-import com.company.nominee.Nominee;
 
 
 /**
@@ -11,7 +9,7 @@ import com.company.nominee.Nominee;
 public class NominationHelper {
     private double nomineeCurrentAwardsTotal = 0; //Required for  nominateNomineeAwardTotal
 
-    private void nominateWithLimits(Nominee nominee, Nominator nominator, Award award) {
+    private void nominateWithLimits(Person nominee, Person nominator, Award award) {
         double nominatorCurrentAwardsTotal = 0;
         int nominatorCurrentAwardsAmount = 0;
         double nomineeCurrentAwardsTotal = 0;
@@ -49,7 +47,7 @@ public class NominationHelper {
 
     }
 
-    private void nominateNominatorAwardTotal(Nominee nominee, Nominator nominator, Award award) {
+    private void nominateNominatorAwardTotal(Person nominee, Person nominator, Award award) {
         double nominatorCurrentAwardsTotal = 0;
         while ((nominatorCurrentAwardsTotal < nominator.getNominatorAwardTotalLimit())) {
             nominator.nominate(nominee, award);
@@ -60,7 +58,7 @@ public class NominationHelper {
     }
 
 
-    private void nominateNominatorAwardQuantity(Nominee nominee, Nominator nominator, Award award) {
+    private void nominateNominatorAwardQuantity(Person nominee, Person nominator, Award award) {
         int nominatorCurrentAwardsAmount = 0;
         do {
             nominator.nominate(nominee, award);
@@ -72,7 +70,7 @@ public class NominationHelper {
     }
 
 
-    private void nominateNomineeAwardTotal(Nominee nominee, Nominator nominator, Award award) {
+    private void nominateNomineeAwardTotal(Person nominee, Person nominator, Award award) {
         while (true) {
             switch ((int) (nomineeCurrentAwardsTotal)) {
                 case 350:
@@ -89,7 +87,7 @@ public class NominationHelper {
     }
 
 
-    private void nominateNomineeAwardQuantity(Nominee nominee, Nominator nominator, Award award) {
+    private void nominateNomineeAwardQuantity(Person nominee, Person nominator, Award award) {
         int nomineeCurrentAwardsAmount = 0;
         for (int i = 0; nomineeCurrentAwardsAmount < nominee.getNomineeAwardQuantityLimit(); i++) {
             nominator.nominate(nominee, award);
@@ -99,7 +97,7 @@ public class NominationHelper {
         notificator("nominateNomineeAwardQuantity");
     }
 
-    public void nominationInitiator(Nominee nominee, Nominator nominator, Award award) {
+    public void nominationInitiator(Person nominee, Person nominator, Award award) {
         nominateNominatorAwardTotal(nominee, nominator, award);
         nominateNominatorAwardQuantity(nominee, nominator, award);
         nominateNomineeAwardTotal(nominee, nominator, award);
