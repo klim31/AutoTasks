@@ -11,6 +11,8 @@ import com.company.nominee.Nominee;
 public class NominationHelper {
     private double nomineeCurrentAwardsTotal = 0; //Required for  nominateNomineeAwardTotal
 
+    enum MethodName {nominateNominatorAwardTotal, nominateNominatorAwardQuantity, nominateNomineeAwardTotal, nominateNomineeAwardQuantity, all}
+
     private void nominateWithLimits(Nominee nominee, Nominator nominator, Award award) {
         double nominatorCurrentAwardsTotal = 0;
         int nominatorCurrentAwardsAmount = 0;
@@ -95,12 +97,26 @@ public class NominationHelper {
         notificator("nominateNomineeAwardQuantity");
     }
 
-    public void nominationInitiator(Nominee nominee, Nominator nominator, Award award) {
-        nominateWithLimits(nominee, nominator, award);
-        nominateNominatorAwardTotal(nominee, nominator, award);
-        nominateNominatorAwardQuantity(nominee, nominator, award);
-        nominateNomineeAwardTotal(nominee, nominator, award);
-        nominateNomineeAwardQuantity(nominee, nominator, award);
+    public void nominationInitiator(Nominee nominee, Nominator nominator, Award award, MethodName methodName) {
+        switch (methodName) {
+            case nominateNominatorAwardTotal:
+                nominateNominatorAwardTotal(nominee, nominator, award);
+                break;
+            case nominateNominatorAwardQuantity:
+                nominateNominatorAwardQuantity(nominee, nominator, award);
+                break;
+            case nominateNomineeAwardTotal:
+                nominateNomineeAwardTotal(nominee, nominator, award);
+                break;
+            case nominateNomineeAwardQuantity:
+                nominateNomineeAwardQuantity(nominee, nominator, award);
+                break;
+            case all:
+                nominateNominatorAwardTotal(nominee, nominator, award);
+                nominateNominatorAwardQuantity(nominee, nominator, award);
+                nominateNomineeAwardTotal(nominee, nominator, award);
+                nominateNomineeAwardQuantity(nominee, nominator, award);
+        }
     }
 
     private void notificator(String methodName) {

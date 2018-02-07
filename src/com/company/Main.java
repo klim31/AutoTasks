@@ -12,6 +12,6 @@ public class Main {
         Award awardNoSoli = new Award(70);
         Nominator nominator = new Nominator("Gary", 5, 300);
         Nominee nominee = new Nominee("Klim", 4, 350);
-        nominationHelper.nominationInitiator(nominee, nominator, awardNoSoli);
+        nominationHelper.nominationInitiator(nominee, nominator, awardNoSoli, NominationHelper.MethodName.all);
     }
 }
