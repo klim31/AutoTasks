@@ -2,7 +2,6 @@ package com.company.nominator;
 
 import com.company.Person;
 import com.company.award.Award;
-import com.company.nominee.Nominee;
 
 /**
  * Created by Klim_Starykau on 12/15/2017.
@@ -69,14 +68,4 @@ public class Nominator extends Person {
                 '}';
     }
 
-    @Override
-    public boolean isLimitReached(double averageValue, double limitValue) {
-        if (averageValue >= limitValue){
-            System.out.println("Limit: "+ limitValue + " is reached!");
-            return true;
-        }
-        else
-            System.out.println("Limit is not reached yet: "+ averageValue);
-            return false;
-    }
 }
