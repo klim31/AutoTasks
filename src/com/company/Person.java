@@ -10,13 +10,15 @@ public abstract class Person implements OperationsWithLimit{
     private String userPrivilege = "Base privilege";
 
 
-    protected Person(int userId, String clientName, String userPrivilege) {
+    public Person(int userId, String clientName, String userPrivilege) {
+        System.out.println("Person constructor");
         this.userId = userId;
         this.clientName = clientName;
         this.userPrivilege = userPrivilege;
     }
 
     public Person() {
+        this(999,"Staff","Nominator");
     }
 
     public void AssingToClient(String newClientName) {

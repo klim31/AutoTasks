@@ -27,6 +27,7 @@ public class Nominator extends Person {
 
     public Nominator(String name, int nominatorAwardQuantityLimit, double nominatorAwardTotalLimit, int userId, String clientName, String userPrivilege, String nominatorPrivilege) {
         super(userId, clientName, userPrivilege);
+        System.out.println("Nominator constructor");
         this.name = name;
         this.nominatorAwardQuantityLimit = nominatorAwardQuantityLimit;
         this.nominatorAwardTotalLimit = nominatorAwardTotalLimit;
@@ -73,14 +74,4 @@ public class Nominator extends Person {
                 '}';
     }
 
-    @Override
-    public boolean isLimitReached(double averageValue, double limitValue) {
-        if (averageValue >= limitValue){
-            System.out.println("Limit: "+ limitValue + " is reached!");
-            return true;
-        }
-        else
-            System.out.println("Limit is not reached yet: "+ averageValue);
-            return false;
-    }
 }
