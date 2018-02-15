@@ -6,7 +6,7 @@ import com.company.award.Award;
 /**
  * Created by Klim_Starykau on 12/15/2017.
  */
-public class Nominee extends Person{
+public class Nominee extends Person {
 
     static {
         System.out.println("nominee class init");
@@ -63,20 +63,10 @@ public class Nominee extends Person{
         this.nomineeAwardTotalLimit = nomineeAwardTotalLimit;
     }
 
-    @Override
-    public boolean isLimitReached(double averageValue, double limitValue) {
-        if (averageValue >= limitValue){
-            System.out.println("Limit: "+ limitValue + " is reached!");
-            return true;
-        }
-        else
-            System.out.println("Limit is not reached yet: "+ averageValue);
-        return false;
-    }
 
     @Override
     public String toString() {
-        return   super.toString() + "Nominee{" +
+        return super.toString() + "Nominee{" +
                 "name='" + name + '\'' +
                 ", nomineeAwardQuantityLimit=" + nomineeAwardQuantityLimit +
                 ", nomineeAwardTotalLimit=" + nomineeAwardTotalLimit +

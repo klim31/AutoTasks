@@ -8,7 +8,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Inheritance task
         NominationHelper nominationHelper = new NominationHelper();
         Award awardNoSoli = new Award(70);
         Person nominator = new Nominator("Gary", 5, 300, 777, "Staff", "Base privilege", "NominatorPrivilege");
@@ -16,6 +15,8 @@ public class Main {
         nominationHelper.nominationInitiator(nominee, nominator, awardNoSoli);
         nominator.AssingToClient(1);
         nominee.AssingToClient("Qlik");
+        awardNoSoli.printAwards((awardNoSoli.awardCreator()), "Quality");
+
 
     }
 }

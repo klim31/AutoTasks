@@ -52,7 +52,7 @@ public class NominationHelper {
         while ((nominatorCurrentAwardsTotal < nominator.getNominatorAwardTotalLimit())) {
             nominator.nominate(nominee, award);
             nominatorCurrentAwardsTotal += award.getValue();
-            nominator.isLimitReached(nominatorCurrentAwardsTotal,nominator.getNominatorAwardTotalLimit());
+            nominator.isLimitReached(nominatorCurrentAwardsTotal, nominator.getNominatorAwardTotalLimit());
         }
         notificator("nominateNominatorAwardTotal");
     }
@@ -63,7 +63,7 @@ public class NominationHelper {
         do {
             nominator.nominate(nominee, award);
             nominatorCurrentAwardsAmount++;
-            nominator.isLimitReached(Double.valueOf(nominatorCurrentAwardsAmount),Double.valueOf(nominator.getNominatorAwardQuantityLimit()));
+            nominator.isLimitReached(Double.valueOf(nominatorCurrentAwardsAmount), Double.valueOf(nominator.getNominatorAwardQuantityLimit()));
         }
         while (nominatorCurrentAwardsAmount < nominator.getNominatorAwardQuantityLimit());
         notificator("nominateNominatorAwardQuantity");
@@ -79,7 +79,7 @@ public class NominationHelper {
                 default:
                     nominator.nominate(nominee, award);
                     nomineeCurrentAwardsTotal += award.getValue();
-                    nominee.isLimitReached(nomineeCurrentAwardsTotal,350);
+                    nominee.isLimitReached(nomineeCurrentAwardsTotal, 350);
                     nominateNomineeAwardTotal(nominee, nominator, award);
             }
             return;
@@ -92,7 +92,7 @@ public class NominationHelper {
         for (int i = 0; nomineeCurrentAwardsAmount < nominee.getNomineeAwardQuantityLimit(); i++) {
             nominator.nominate(nominee, award);
             nomineeCurrentAwardsAmount++;
-            nominee.isLimitReached(nomineeCurrentAwardsAmount,nominee.getNomineeAwardQuantityLimit());
+            nominee.isLimitReached(nomineeCurrentAwardsAmount, nominee.getNomineeAwardQuantityLimit());
         }
         notificator("nominateNomineeAwardQuantity");
     }
