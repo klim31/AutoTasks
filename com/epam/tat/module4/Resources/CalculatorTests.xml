@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CalculatorSuite" parallel="false">
+
+
+    <test name="Sum tests">
+        <parameter name="negativeVal1" value="2"/>
+        <parameter name="negativeVal2" value="3"/>
+        <parameter name="negativeVal3" value="4"/>
+        <classes>
+            <class name="epam.tat.module4.tests.SumTest"/>
+        </classes>
+    </test>
+
+    <test name="Sub tests">
+        <parameter name="negativeVal1" value="6"/>
+        <parameter name="negativeVal2" value="5"/>
+        <parameter name="negativeVal3" value="2"/>
+        <classes>
+            <class name=""/>
+        </classes>
+    </test>
+
+    <test name="Multi tests">
+        <parameter name="negativeVal1" value="2"/>
+        <parameter name="negativeVal2" value="3"/>
+        <parameter name="negativeVal3" value="5"/>
+        <classes>
+            <class name="epam.tat.module4.tests.MultiTest"/>
+        </classes>
+    </test>
+
+    <test name="Sqrt tests">
+        <parameter name="negativeVal1" value="-2"/>
+        <classes>
+            <class name="epam.tat.module4.tests.SqrtTest"/>
+        </classes>
+    </test>
+
+    <test name="IsPositive tests">
+        <parameter name="negativeVal1" value="1"/>
+        <parameter name="negativeVal2" value="false"/>
+        <classes>
+            <class name="epam.tat.module4.tests.IsPositiveTest"/>
+        </classes>
+    </test>
+
+</suite>
