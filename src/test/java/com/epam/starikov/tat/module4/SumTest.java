@@ -10,28 +10,29 @@ public class SumTest {
 
     private Calculator calc;
 
-    @BeforeTest(groups = {"Group1"})
+    @BeforeTest(groups = {"Double Values Sum"})
     public void setUp() {
         calc = new Calculator();
     }
 
 
-    @Test(dataProvider = "DP for double sum", groups =  {"Group1"})
+    @Test(dataProvider = "DP for double sum", groups = {"Double Values Sum"})
     public void testSumPositive(double a, double b, double c) {
         Assert.assertEquals(calc.sum(a, b), c);
     }
 
-     @Test(dataProvider = "DP for long sum")
-     public void testSumPositive(long a,long b,long c){
-         Assert.assertEquals(calc.sum(a, b),c);
-     }
+    @Test(dependsOnGroups = "Double Values Sum",dataProvider = "DP for long sum", groups = {"Long Values Sum"})
+    public void testSumPositive(long a, long b, long c) {
+        Assert.assertEquals(calc.sum(a, b), c);
+    }
 
 
-     @Test(groups =  {"Group1"})
-     @Parameters({"negativeVal1","negativeVal2","negativeVal3"})
-     public void testSumNegative(long a,long b,long c){
-         Assert.assertNotEquals(calc.sum(a, b),c);
-     }
+    @Test(groups = {"Double Values Sum"})
+    @Parameters({"negativeVal1", "negativeVal2", "negativeVal3"})
+    public void testSumNegative(long a, long b, long c) {
+        Assert.assertNotEquals(calc.sum(a, b), c);
+    }
+
     @DataProvider(name = "DP for double sum")
     private Object[][] dPDouble() {
         return new Object[][]{
@@ -47,7 +48,7 @@ public class SumTest {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         System.out.println("AfterClass Sum");
     }
 

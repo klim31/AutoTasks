@@ -17,14 +17,14 @@ public class IsPositiveTest {
 
 
     @Test(dataProvider = "DP for long Positive")
-    public void testSumPositive(long a, boolean b) {
+    public void testIsPositive(long a, boolean b) {
         Assert.assertEquals(calc.isPositive(a), b);
     }
 
 
     @Test
-    @Parameters({"negativeVal1","negativeVal2"})
-    public void testSumNegative(long a, boolean b) {
+    @Parameters({"negativeVal1", "negativeVal2"})
+    public void testIsNegative(long a, boolean b) {
         Assert.assertNotEquals(calc.isPositive(a), b);
     }
 

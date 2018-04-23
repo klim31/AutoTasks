@@ -1,4 +1,4 @@
-package com.epam.starikov.tat.module4.utils;
+package com.epam.starikov.tat.module4;
 
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;

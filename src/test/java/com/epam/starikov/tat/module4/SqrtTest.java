@@ -22,10 +22,10 @@ public class SqrtTest {
     }
 
 
-    @Test(expectedExceptions = Exception.class)
+    @Test
     @Parameters({"negativeVal1"})
     public void testSqrtNegative(double a) {
-        calc.sqrt(a);
+        Assert.assertNotEquals(calc.sqrt(a),Double.NaN);
     }
 
     @DataProvider(name = "DP for Sqrt")

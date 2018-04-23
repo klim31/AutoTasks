@@ -20,13 +20,13 @@ public class SubTest {
         Assert.assertEquals(calc.sub(a, b), c);
     }
 
-    @Test(dataProvider = "DP for long sub")
-    public void testSubPositive(long a, long b, long c) {
+    @Test(dependsOnMethods = "testSubPositive",dataProvider = "DP for long sub")
+    public void testSubPositiveLong(long a, long b, long c) {
         Assert.assertEquals(calc.sub(a, b), c);
     }
 
 
-    @Test
+    @Test(dependsOnMethods = "testSubPositiveLong")
     @Parameters({"negativeVal1", "negativeVal2", "negativeVal3"})
     public void testSubNegative(long a, long b, long c) {
         Assert.assertNotEquals(calc.sub(a, b), c);
