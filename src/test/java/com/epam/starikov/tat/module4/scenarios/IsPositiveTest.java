@@ -1,4 +1,6 @@
-import epam.tat.module4.Calculator;
+package com.epam.starikov.tat.module4.scenarios;
+
+import com.epam.starikov.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -8,7 +10,7 @@ import org.testng.annotations.*;
 public class IsPositiveTest {
     private Calculator calc;
 
-    @BeforeGroups
+    @BeforeTest
     public void setUp() {
         calc = new Calculator();
         System.out.println("BeforeClass IsPositive");
@@ -16,25 +18,26 @@ public class IsPositiveTest {
 
 
     @Test(dataProvider = "DP for long Positive")
-    public void testSumPositive(long a,boolean b){
-        Assert.assertEquals(calc.isPositive(a),b);
+    public void testIsPositive(long a, boolean b) {
+        Assert.assertEquals(calc.isPositive(a), b);
     }
 
-    @Parameters({"negativeVal1,negativeVal2"})
+
     @Test
-    public void testSumNegative(long a,boolean b){
-        Assert.assertNotEquals(calc.isPositive(a),b);
+    @Parameters({"negativeVal1", "negativeVal2"})
+    public void testIsNegative(long a, boolean b) {
+        Assert.assertNotEquals(calc.isPositive(a), b);
     }
 
     @DataProvider(name = "DP for long Positive")
-    private Object[][] dPLong(){
+    private Object[][] dPLong() {
         return new Object[][]{
-                {1L,true},
-                {-7L,false}};
+                {1, true},
+                {-7, false}};
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         System.out.println("AfterClass IsPositive");
     }
 }

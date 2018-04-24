@@ -1,5 +1,6 @@
-package com.epam.starikov.tat.module4;
+package com.epam.starikov.tat.module4.scenarios;
 
+import com.epam.starikov.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -17,12 +18,12 @@ public class MultiTest {
 
 
     @Test(dataProvider = "DP for double Mult")
-    public void testMultPositive(double a, double b, double c) {
+    public void testMultPositiveDouble(double a, double b, double c) {
         Assert.assertEquals(calc.mult(a, b), c);
     }
 
     @Test(dataProvider = "DP for long Mult")
-    public void testMultPositive(long a, long b, long c) {
+    public void testMultPositiveLong(long a, long b, long c) {
         Assert.assertEquals(calc.mult(a, b), c);
     }
 
@@ -42,8 +43,8 @@ public class MultiTest {
     @DataProvider(name = "DP for long Mult")
     private Object[][] dPLong() {
         return new Object[][]{
-                {5L, 1L, 5L},
-                {7L, 4L, 28L}};
+                {5, 1, 5},
+                {7, 4, 28}};
     }
 
     @AfterClass

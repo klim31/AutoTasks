@@ -1,5 +1,6 @@
-package com.epam.starikov.tat.module4;
+package com.epam.starikov.tat.module4.scenarios;
 
+import com.epam.starikov.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -17,12 +18,12 @@ public class SumTest {
 
 
     @Test(dataProvider = "DP for double sum", groups = {"Double Values Sum"})
-    public void testSumPositive(double a, double b, double c) {
+    public void testSumPositiveDouble(double a, double b, double c) {
         Assert.assertEquals(calc.sum(a, b), c);
     }
 
     @Test(dependsOnGroups = "Double Values Sum",dataProvider = "DP for long sum", groups = {"Long Values Sum"})
-    public void testSumPositive(long a, long b, long c) {
+    public void testSumPositiveLong(long a, long b, long c) {
         Assert.assertEquals(calc.sum(a, b), c);
     }
 
@@ -43,8 +44,8 @@ public class SumTest {
     @DataProvider(name = "DP for long sum")
     private Object[][] dPLong() {
         return new Object[][]{
-                {1L, 5L, 6L},
-                {7L, 8L, 15L}};
+                {1, 5, 6},
+                {7, 8, 15}};
     }
 
     @AfterClass

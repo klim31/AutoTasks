@@ -14,7 +14,7 @@
             </run>
         </groups>
         <classes>
-            <class name="com.epam.starikov.tat.module4.SumTest"/>
+            <class name="com.epam.starikov.tat.module4.scenarios.SumTest"/>
         </classes>
     </test>
 
@@ -23,7 +23,16 @@
         <parameter name="negativeVal2" value="5"/>
         <parameter name="negativeVal3" value="2"/>
         <classes>
-            <class name="com.epam.starikov.tat.module4.SubTest"/>
+            <class name="com.epam.starikov.tat.module4.scenarios.SubTest"/>
+        </classes>
+    </test>
+
+    <test name="Pow tests">
+        <parameter name="negativeVal1" value="2.0"/>
+        <parameter name="negativeVal2" value="3.0"/>
+        <parameter name="negativeVal3" value="5.0"/>
+        <classes>
+            <class name="com.epam.starikov.tat.module4.scenarios.PowTest"/>
         </classes>
     </test>
 
@@ -32,7 +41,7 @@
         <parameter name="negativeVal2" value="3"/>
         <parameter name="negativeVal3" value="5"/>
         <classes>
-            <class name="com.epam.starikov.tat.module4.MultiTest"/>
+            <class name="com.epam.starikov.tat.module4.scenarios.MultiTest"/>
         </classes>
     </test>
 
@@ -41,21 +50,43 @@
         <parameter name="negativeVal1" value="1"/>
         <parameter name="negativeVal2" value="false"/>
         <classes>
-            <class name="com.epam.starikov.tat.module4.IsPositiveTest"/>
+            <class name="com.epam.starikov.tat.module4.scenarios.IsPositiveTest"/>
+        </classes>
+    </test>
+
+    <test name="Tg tests">
+        <parameter name="Value1" value="0"/>
+        <parameter name="Value2" value="NaN"/>
+        <classes>
+            <class name="com.epam.starikov.tat.module4.scenarios.TgTest"/>
+        </classes>
+    </test>
+
+    <test name="Ctg tests">
+        <parameter name="Value1" value="90.0"/>
+        <parameter name="Value2" value="1"/>
+        <classes>
+            <class name="com.epam.starikov.tat.module4.scenarios.CtgTest"/>
         </classes>
     </test>
 
     <test name="Sqrt tests">
          <parameter name="negativeVal1" value="-2"/>
         <classes>
-            <class name="com.epam.starikov.tat.module4.SqrtTest"/>
+            <class name="com.epam.starikov.tat.module4.scenarios.SqrtTest"/>
         </classes>
     </test>
 
     <test name="Timeout tests">
         <parameter name="Time" value="2"/>
         <classes>
-            <class name="com.epam.starikov.tat.module4.TimeoutTest"/>
+            <class name="com.epam.starikov.tat.module4.scenarios.TimeoutTest"/>
+        </classes>
+    </test>
+
+    <test name="IsNegative tests">
+        <classes>
+            <class name="com.epam.starikov.tat.module4.scenarios.IsNegativeTest"/>
         </classes>
     </test>
 

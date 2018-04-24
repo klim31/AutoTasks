@@ -1,5 +1,6 @@
-package com.epam.starikov.tat.module4;
+package com.epam.starikov.tat.module4.scenarios;
 
+import com.epam.starikov.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -42,8 +43,8 @@ public class SubTest {
     @DataProvider(name = "DP for long sub")
     private Object[][] dPLong() {
         return new Object[][]{
-                {5L, 1L, 4L},
-                {7L, 4L, 3L}};
+                {5, 1, 4},
+                {7, 4, 3}};
     }
 
     @AfterClass
