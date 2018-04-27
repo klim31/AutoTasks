@@ -1,8 +1,11 @@
 package com.epam.starikov.tat.module4.scenarios;
 
-import com.epam.starikov.tat.module4.Calculator;
+import com.epam.tat.module4.Calculator;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 /**
  * Created by Klim_Starykau on 4/24/2018.
