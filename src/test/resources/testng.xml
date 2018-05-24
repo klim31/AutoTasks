@@ -11,7 +11,7 @@
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="com.globoforce.testautomation.mentoring.webdriver.KLtests.GfTest"/>
+            <class name="Scenarios.CompletePriorityTest"/>
         </classes>
     </test>
 
