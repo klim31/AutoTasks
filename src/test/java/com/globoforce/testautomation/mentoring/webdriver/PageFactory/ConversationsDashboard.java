@@ -1,10 +1,10 @@
 package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
 /**
@@ -12,11 +12,9 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
  */
 public class ConversationsDashboard extends BasePage {
 
-    private final String priorityTitle = "KLtitle";
-    private String priorityDescription;
 
     @Name("Priority 'Add' button")
-    @FindBy(xpath = "//a[@class='btn btn--priority']")
+    @FindBy(xpath = "//gf-priority-list//div[@class='swimlaneSection-button']")
     private Button addPriority;
 
     @Name("Priority Title")
@@ -31,20 +29,32 @@ public class ConversationsDashboard extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn--priority']")
     private Button createPriorityButton;
 
-    @Name("Active created priority")
+    @Name("Delete dropdown button")
+    @FindBy(xpath = "//button[@class='btn btn--priority btn--toggle-split']")
+    private Button deleteDropdownButton;
+
+    @Name("Delete option")
+    @FindBy(xpath = "//button[@class='dropdown-item'][2]")
+    private Button deleteOptionButton;
+
+    @Name("Delete confirmation")
+    @FindBy(xpath = "//button[@class='btn btn--primary']")
+    private Button deleteConfirmationButton;
+
+    /*@Name("Active created priority")
     @FindBy(xpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]")
     private Link createdActivepriority;
 
     @Name("Completed priority")
     @FindBy(xpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]")
-    private Link completedPriority;
+    private Link completedPriority;*/
 
 
     public ConversationsDashboard(WebDriver driver) {
         super(driver);
     }
 
-    public ConversationsDashboard createActivePriority(String priorTitle){
+    public ConversationsDashboard createActivePriority(String priorityTitle,String priorityDescription){
         addPriority.click();
         lightboxTitle.clear();
         lightboxTitle.sendKeys(priorityTitle);
@@ -54,13 +64,15 @@ public class ConversationsDashboard extends BasePage {
         return this;
     }
 
-    public ConversationsDashboard completeActivePriority(){
-        createdActivepriority.click();
+    public ConversationsDashboard completeActivePriority(String priorityTitle,WebDriver driver){
+        String activePriorityXpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
+        driver.findElement(By.xpath(activePriorityXpath)).click();
         createPriorityButton.click();
         return this;
     }
 
-    public boolean isPriorityCompleted(){
-        return isElementPresent(completedPriority);
+    public boolean isPriorityCompleted(WebDriver driver,String priorityTitle){
+        String completedPriorityXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
+        return isElementPresent(driver.findElement(By.xpath(completedPriorityXpath)));
     }
 }

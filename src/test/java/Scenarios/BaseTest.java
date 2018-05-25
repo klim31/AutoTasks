@@ -1,6 +1,5 @@
 package Scenarios;
 
-import com.globoforce.testautomation.mentoring.webdriver.PageFactory.ConversationsDashboard;
 import com.globoforce.testautomation.mentoring.webdriver.PageFactory.LoginPage;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -49,10 +48,10 @@ public class BaseTest {
         webDriver.manage().window().maximize();
     }
 
-    @BeforeClass()
+    @BeforeClass(dependsOnMethods = "setUp")
     @Parameters({"username", "password", "URL"})
     public void loggingIn (String username, String password, String URL){
-         ConversationsDashboard convDb = new LoginPage(webDriver)
+         new LoginPage(webDriver)
                  .openLogInScreen(URL)
                  .clearPassword()
                  .clearUsername()
