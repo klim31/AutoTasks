@@ -41,15 +41,6 @@ public class ConversationsDashboard extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn--primary']")
     private Button deleteConfirmationButton;
 
-    /*@Name("Active created priority")
-    @FindBy(xpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]")
-    private Link createdActivepriority;
-
-    @Name("Completed priority")
-    @FindBy(xpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]")
-    private Link completedPriority;*/
-
-
     public ConversationsDashboard(WebDriver driver) {
         super(driver);
     }
@@ -74,5 +65,19 @@ public class ConversationsDashboard extends BasePage {
     public boolean isPriorityCompleted(WebDriver driver,String priorityTitle){
         String completedPriorityXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
         return isElementPresent(driver.findElement(By.xpath(completedPriorityXpath)));
+    }
+
+    public ConversationsDashboard deleteCompletedPriority (String priorityTitle, WebDriver driver){
+        String completedPriorityXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
+        driver.findElement(By.xpath(completedPriorityXpath)).click();
+        deleteDropdownButton.click();
+        deleteOptionButton.click();
+        deleteConfirmationButton.click();
+        return this;
+    }
+
+    public boolean isPriorityDeleted(String priorityTitle, WebDriver driver){
+        String completedPriorityXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
+        return isElementPresent(By.xpath(completedPriorityXpath));
     }
 }

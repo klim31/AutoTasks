@@ -1,12 +1,10 @@
 package Scenarios;
 
 import com.globoforce.testautomation.mentoring.webdriver.PageFactory.LoginPage;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
@@ -31,17 +29,17 @@ public class BaseTest {
                 break;
             case "Firefox":
                 System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver.exe");
-                DesiredCapabilities capabilities = new DesiredCapabilities();
+                /*DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities = DesiredCapabilities.firefox();
                 capabilities.setBrowserName("firefox");
                 capabilities.setVersion("your firefox version");
                 capabilities.setPlatform(Platform.WINDOWS);
-                capabilities.setCapability("marionette", true);
-                webDriver = new FirefoxDriver(capabilities);
+                capabilities.setCapability("marionette", true);*/
+                webDriver = new FirefoxDriver();
                 break;
-            case "IE11":
-                System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\IEDriverServer.exe");
-                webDriver = new InternetExplorerDriver();
+            case "Edge":
+                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\MicrosoftWebDriver.exe");
+                webDriver = new EdgeDriver();
                 break;
         }
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -59,7 +57,7 @@ public class BaseTest {
                  .insertUsername(username)
                  .LogIn()
                  .openWaffleMenu()
-                 .goToConversations();
+                 .goToConversations(webDriver);
     }
 
     @AfterClass

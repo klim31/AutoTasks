@@ -1,6 +1,6 @@
 package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
 
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
@@ -29,9 +29,13 @@ public class BasePage {
         try {
             element.isDisplayed();
             return true;
-        } catch (NoSuchElementException nsee) {
+        } catch (Exception nsee) {
             return false;
         }
+    }
+
+    public boolean isElementPresent(By locator) {
+        return getDriver().findElements(locator).size()>0;
     }
 
 }
