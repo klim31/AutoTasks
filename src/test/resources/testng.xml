@@ -9,7 +9,7 @@
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
         <parameter name="priorityTitle" value="KLtitle"/>
         <parameter name="priorityDescription" value="KLdescr"/>
-        <parameter name="Browser" value="Edge"/>
+        <parameter name="Browser" value="Firefox"/>
         <classes>
             <class name="Scenarios.CompletePriorityTest"/>
         </classes>
@@ -22,7 +22,7 @@
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
         <parameter name="priorityTitle" value="KLtitleDelete"/>
         <parameter name="priorityDescription" value="KLdescrDelete"/>
-        <parameter name="Browser" value="Edge"/>
+        <parameter name="Browser" value="Firefox"/>
         <classes>
             <class name="Scenarios.DeletePriorityTest"/>
         </classes>

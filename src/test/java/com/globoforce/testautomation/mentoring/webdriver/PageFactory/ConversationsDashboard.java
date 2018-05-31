@@ -70,6 +70,8 @@ public class ConversationsDashboard extends BasePage {
     public ConversationsDashboard deleteCompletedPriority (String priorityTitle, WebDriver driver){
         String completedPriorityXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
         driver.findElement(By.xpath(completedPriorityXpath)).click();
+        /*JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click()", completedPriorityXpath);*/
         deleteDropdownButton.click();
         deleteOptionButton.click();
         deleteConfirmationButton.click();
