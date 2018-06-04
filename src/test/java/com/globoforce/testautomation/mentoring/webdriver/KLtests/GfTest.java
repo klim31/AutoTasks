@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GfTest {
     private WebDriver driver;
+    private String title;
 
 
     @BeforeClass
@@ -69,10 +70,11 @@ public class GfTest {
     @Test(description = "Create active priority", dependsOnMethods = "switchToConversations")
     @Parameters({"priorityTitle", "priorityDescription"})
     public void createPriority(String priorityTitle, String priorityDescription) {
-        String activePriorityTitleXpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
+        title = priorityTitle + System.currentTimeMillis();
+        String activePriorityTitleXpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + title + "')]";
         driver.findElement(By.xpath("//a[@class='btn btn--priority']")).click();
         driver.findElement(By.xpath("//input[@class='mergedInputs-inputTitle normalizePlaceholder']")).clear();
-        driver.findElement(By.xpath("//input[@class='mergedInputs-inputTitle normalizePlaceholder']")).sendKeys(priorityTitle);
+        driver.findElement(By.xpath("//input[@class='mergedInputs-inputTitle normalizePlaceholder']")).sendKeys(title);
         driver.findElement(By.xpath("//textarea[@class='superTextarea-field']")).clear();
         driver.findElement(By.xpath("//textarea[@class='superTextarea-field']")).sendKeys(priorityDescription);
         driver.findElement(By.xpath("//button[@class='btn btn--priority']")).click();
@@ -80,10 +82,10 @@ public class GfTest {
     }
 
     @Test(description = "Complete the priority", dependsOnMethods = "createPriority")
-    @Parameters({"priorityTitle"})
+    //@Parameters({"priorityTitle"})
     public void completePriority(String priorityTitle) {
-        String completedPriorityTitleXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
-        String activePriorityTitleXpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
+        String completedPriorityTitleXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + title + "')]";
+        String activePriorityTitleXpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + title + "')]";
         driver.findElement(By.xpath(activePriorityTitleXpath)).click();
         driver.findElement(By.xpath("//button[@class='btn btn--priority']")).click();
         Assert.assertTrue(driver.findElement(By.xpath(completedPriorityTitleXpath)).isDisplayed());
