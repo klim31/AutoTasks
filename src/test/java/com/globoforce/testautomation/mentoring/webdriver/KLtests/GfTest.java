@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -27,13 +27,12 @@ public class GfTest {
                 driver = new ChromeDriver();
                 break;
             case "Firefox":
-                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver1.exe");
                 driver = new FirefoxDriver();
                 break;
-            case "IE11":
-                System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\IEDriverServer.exe");
-                driver = new InternetExplorerDriver();
-                ;
+            case "Edge":
+                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\MicrosoftWebDriver.exe");
+                driver = new EdgeDriver();
                 break;
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -57,7 +56,12 @@ public class GfTest {
     public void switchToConversations() {
         driver.findElement(By.id("applicationsToggleButton")).click();
         driver.findElement(By.xpath("//a[@data-appname='Conversations']")).click();
-        ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ArrayList<String> newTab = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(newTab.get(1));
         Assert.assertTrue(driver.findElement(By.xpath("//a[@class='btn btn--priority']")).isDisplayed());
     }

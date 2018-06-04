@@ -9,7 +9,7 @@
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
         <parameter name="priorityTitle" value="KLtitle"/>
         <parameter name="priorityDescription" value="KLdescr"/>
-        <parameter name="Browser" value="Chrome"/>
+        <parameter name="Browser" value="Edge"/>
         <classes>
             <class name="com.globoforce.testautomation.mentoring.webdriver.KLtests.GfTest"/>
         </classes>
