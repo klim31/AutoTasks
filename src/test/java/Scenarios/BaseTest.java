@@ -29,12 +29,6 @@ public class BaseTest {
                 break;
             case "Firefox":
                 System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver.exe");
-                /*DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities = DesiredCapabilities.firefox();
-                capabilities.setBrowserName("firefox");
-                capabilities.setVersion("your firefox version");
-                capabilities.setPlatform(Platform.WINDOWS);
-                capabilities.setCapability("marionette", true);*/
                 webDriver = new FirefoxDriver();
                 break;
             case "Edge":

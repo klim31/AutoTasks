@@ -10,7 +10,7 @@ public class DeletePriorityTest extends BaseTest {
 
     @Test(description = "CreateAndDeletePriority")
     @Parameters({"priorityTitle", "priorityDescription"})
-    public void createAndCompletePriority(String priorityTitle, String priorityDescription) {
+    public void createAndCompleteDeletePriority(String priorityTitle, String priorityDescription) {
         ConversationsDashboard conversationsDashboard = new ConversationsDashboard(getWebDriver())
                 .createActivePriority(priorityTitle, priorityDescription)
                 .completeActivePriority(priorityTitle, getWebDriver())
