@@ -82,8 +82,7 @@ public class GfTest {
     }
 
     @Test(description = "Complete the priority", dependsOnMethods = "createPriority")
-    //@Parameters({"priorityTitle"})
-    public void completePriority(String priorityTitle) {
+    public void completePriority() {
         String completedPriorityTitleXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + title + "')]";
         String activePriorityTitleXpath = "//div[@class='prioritySection'][1]//div[@class='priorityCard']//li[contains(.,'" + title + "')]";
         driver.findElement(By.xpath(activePriorityTitleXpath)).click();
