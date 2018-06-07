@@ -3,6 +3,8 @@ package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.TextInput;
@@ -69,9 +71,10 @@ public class ConversationsDashboard extends BasePage {
 
     public ConversationsDashboard deleteCompletedPriority (String priorityTitle, WebDriver driver){
         String completedPriorityXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(completedPriorityXpath)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(completedPriorityXpath)));
         driver.findElement(By.xpath(completedPriorityXpath)).click();
-        /*JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click()", completedPriorityXpath);*/
         deleteDropdownButton.click();
         deleteOptionButton.click();
         deleteConfirmationButton.click();
@@ -79,6 +82,11 @@ public class ConversationsDashboard extends BasePage {
     }
 
     public boolean isPriorityDeleted(String priorityTitle, WebDriver driver){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String completedPriorityXpath = "//div[@class='prioritySection'][2]//div[@class='priorityCard']//li[contains(.,'" + priorityTitle + "')]";
         return isElementPresent(By.xpath(completedPriorityXpath));
     }

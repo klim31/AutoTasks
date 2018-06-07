@@ -6,6 +6,8 @@ import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.Link;
 
+import java.util.ArrayList;
+
 /**
  * Created by Klim_Starykau on 5/22/2018.
  */
@@ -30,19 +32,24 @@ public class HomePage extends BasePage {
 
     public ConversationsDashboard goToConversations(WebDriver driver) {
         //conversationsLink.click();
-        String winHandleBefore = driver.getWindowHandle();
+        //String winHandleBefore = driver.getWindowHandle();
         conversationsLink.click();
-        for (String winHandle : driver.getWindowHandles()) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        /*for (String winHandle : driver.getWindowHandles()) {
             if (!(winHandle.equals(winHandleBefore))) {
                 driver.close();
                 driver.switchTo().window(winHandle);
             }
         }
-        return new ConversationsDashboard(driver);
+        return new ConversationsDashboard(driver);*/
 
 
-       /* ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
+        ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(newTab.get(1));
-        return new  ConversationsDashboard(getDriver());*/
+        return new  ConversationsDashboard(getDriver());
     }
 }

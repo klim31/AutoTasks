@@ -7,7 +7,7 @@
         <parameter name="password" value="password1"/>
         <parameter name="URL"
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
-        <parameter name="priorityTitle" value="KLtitle"/>
+        <parameter name="priorityTitle" value="KLcreationFirefox"/>
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="Firefox"/>
         <classes>
@@ -20,20 +20,19 @@
         <parameter name="password" value="password1"/>
         <parameter name="URL"
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
-        <parameter name="priorityTitle" value="KLtitleDelete"/>
+        <parameter name="priorityTitle" value="KLdeletionFirefox"/>
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="Firefox"/>
         <classes>
             <class name="Scenarios.DeletePriorityTest"/>
         </classes>
     </test>
-
     <test name="Priority complete Test Chrome">
         <parameter name="username" value="mandy_manager1"/>
         <parameter name="password" value="password1"/>
         <parameter name="URL"
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
-        <parameter name="priorityTitle" value="KLtitle"/>
+        <parameter name="priorityTitle" value="KLcreationTitle"/>
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="Chrome"/>
         <classes>
@@ -46,7 +45,7 @@
         <parameter name="password" value="password1"/>
         <parameter name="URL"
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
-        <parameter name="priorityTitle" value="KLtitleDelete"/>
+        <parameter name="priorityTitle" value="KLdeletionTitle"/>
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="Chrome"/>
         <classes>
@@ -59,7 +58,7 @@
         <parameter name="password" value="password1"/>
         <parameter name="URL"
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
-        <parameter name="priorityTitle" value="KLtitle"/>
+        <parameter name="priorityTitle" value="KLcreationTitleEdge"/>
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="Edge"/>
         <classes>
@@ -72,12 +71,11 @@
         <parameter name="password" value="password1"/>
         <parameter name="URL"
                    value="https://test-web1-05.corp.globoforce.com/microsites/t/home?client=testclient5014&amp;setCAG=true"/>
-        <parameter name="priorityTitle" value="KLtitleDelete"/>
+        <parameter name="priorityTitle" value="KLdeleionTitleEdge"/>
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="Edge"/>
         <classes>
             <class name="Scenarios.DeletePriorityTest"/>
         </classes>
     </test>
-
 </suite>
