@@ -1,15 +1,17 @@
 package Scenarios;
 
 import com.globoforce.testautomation.mentoring.webdriver.PageFactory.LoginPage;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,19 +23,28 @@ public class BaseTest {
 
     @BeforeClass
     @Parameters({"Browser"})
-    public static void setUp(@Optional("Chrome") String browser){
+    public static void setUp(@Optional("chrome") String browser) throws MalformedURLException {
         switch (browser) {
-            case "Chrome":
-                System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\chromedriver.exe");
-                webDriver = new ChromeDriver();
+            case "chrome":
+                DesiredCapabilities capChrome = new DesiredCapabilities();
+                capChrome.setBrowserName(browser);
+                capChrome.setPlatform(Platform.WINDOWS);
+                URL url1 = new URL("http://localhost:4444/wd/hub");
+                webDriver = new RemoteWebDriver(url1,capChrome);
                 break;
-            case "Firefox":
-                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver.exe");
-                webDriver = new FirefoxDriver();
+            case "firefox":
+                DesiredCapabilities capFF = new DesiredCapabilities();
+                capFF.setBrowserName(browser);
+                capFF.setPlatform(Platform.WINDOWS);
+                URL url2 = new URL("http://10.9.126.13:4444/wd/hub");
+                webDriver = new RemoteWebDriver(url2,capFF);
                 break;
-            case "Edge":
-                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\MicrosoftWebDriver.exe");
-                webDriver = new EdgeDriver();
+            case "edge":
+                DesiredCapabilities capEdge = new DesiredCapabilities();
+                capEdge.setBrowserName(browser);
+                capEdge.setPlatform(Platform.WINDOWS);
+                URL url3 = new URL("http://localhost:4444/wd/hub");
+                webDriver = new RemoteWebDriver(url3,capEdge);
                 break;
         }
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
