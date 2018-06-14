@@ -1,4 +1,4 @@
-package com.globoforce.testautomation.mentoring.webdriver.KLtests;
+package com.globoforce.testautomation.mentoring.webdriver.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class GfTest {
     private WebDriver driver;
     private String title;
+    private String windowHandleBefore;
 
 
     @BeforeClass
@@ -24,15 +25,15 @@ public class GfTest {
     public void startDriver(@Optional("Chrome") String browser) {
         switch (browser) {
             case "Chrome":
-                System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\drivers\\chromedriver.exe");
                 driver = new ChromeDriver();
                 break;
             case "Firefox":
-                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver1.exe");
+                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\drivers\\geckodriver1.exe");
                 driver = new FirefoxDriver();
                 break;
             case "Edge":
-                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\MicrosoftWebDriver.exe");
+                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\drivers\\MicrosoftWebDriver.exe");
                 driver = new EdgeDriver();
                 break;
         }
@@ -56,14 +57,17 @@ public class GfTest {
     @Test(description = "Switch to Conversations", dependsOnMethods = "verifyLogin")
     public void switchToConversations() {
         driver.findElement(By.id("applicationsToggleButton")).click();
+        windowHandleBefore = driver.getWindowHandle();
         driver.findElement(By.xpath("//a[@data-appname='Conversations']")).click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while(driver.getWindowHandle().equalsIgnoreCase(windowHandleBefore)) {
+            ArrayList<String> newTab = new ArrayList<>(driver.getWindowHandles());
+            for(String tab : newTab) {
+                if(!tab.equals(windowHandleBefore)) {
+                    driver.close();
+                    driver.switchTo().window(tab);
+                }
+            }
         }
-        ArrayList<String> newTab = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(newTab.get(1));
         Assert.assertTrue(driver.findElement(By.xpath("//a[@class='btn btn--priority']")).isDisplayed());
     }
 
