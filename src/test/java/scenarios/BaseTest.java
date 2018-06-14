@@ -1,6 +1,6 @@
-package Scenarios;
+package scenarios;
 
-import com.globoforce.testautomation.mentoring.webdriver.PageFactory.LoginPage;
+import com.globoforce.testautomation.mentoring.webdriver.pagefactory.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -21,18 +21,18 @@ public class BaseTest {
 
     @BeforeClass
     @Parameters({"Browser"})
-    public static void setUp(@Optional("Chrome") String browser){
+    public static void setUp(@Optional("Chrome") String browser) {
         switch (browser) {
             case "Chrome":
-                System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\drivers\\chromedriver.exe");
                 webDriver = new ChromeDriver();
                 break;
             case "Firefox":
-                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\drivers\\geckodriver.exe");
                 webDriver = new FirefoxDriver();
                 break;
             case "Edge":
-                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\MicrosoftWebDriver.exe");
+                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\drivers\\MicrosoftWebDriver.exe");
                 webDriver = new EdgeDriver();
                 break;
         }
@@ -42,16 +42,16 @@ public class BaseTest {
 
     @BeforeClass(dependsOnMethods = "setUp")
     @Parameters({"username", "password", "URL"})
-    public void loggingIn (String username, String password, String URL){
-         new LoginPage(webDriver)
-                 .openLogInScreen(URL)
-                 .clearPassword()
-                 .clearUsername()
-                 .insertPassword(password)
-                 .insertUsername(username)
-                 .LogIn()
-                 .openWaffleMenu()
-                 .goToConversations(webDriver);
+    public void loggingIn(String username, String password, String URL) {
+        new LoginPage(webDriver)
+                .openLogInScreen(URL)
+                .clearPassword()
+                .clearUsername()
+                .insertPassword(password)
+                .insertUsername(username)
+                .LogIn()
+                .openWaffleMenu()
+                .goToConversations(webDriver);
     }
 
     @AfterClass

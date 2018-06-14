@@ -1,4 +1,4 @@
-package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
+package com.globoforce.testautomation.mentoring.webdriver.pagefactory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -58,8 +58,6 @@ public class LoginPage extends BasePage {
         logIn.click();
         return new HomePage(getDriver());
     }
-
-
 
 
 }

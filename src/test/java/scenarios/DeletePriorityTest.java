@@ -1,9 +1,11 @@
-package Scenarios;
+package scenarios;
 
-import com.globoforce.testautomation.mentoring.webdriver.PageFactory.ConversationsDashboard;
+import com.globoforce.testautomation.mentoring.webdriver.pagefactory.ConversationsDashboard;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.util.Date;
 
 public class DeletePriorityTest extends BaseTest {
 
@@ -11,10 +13,11 @@ public class DeletePriorityTest extends BaseTest {
     @Test(description = "CreateAndDeletePriority")
     @Parameters({"priorityTitle", "priorityDescription"})
     public void createAndCompleteDeletePriority(String priorityTitle, String priorityDescription) {
+        String title = priorityTitle + new Date().getTime();
         ConversationsDashboard conversationsDashboard = new ConversationsDashboard(getWebDriver())
-                .createActivePriority(priorityTitle, priorityDescription)
-                .completeActivePriority(priorityTitle, getWebDriver())
-                .deleteCompletedPriority(priorityTitle, getWebDriver());
-        Assert.assertFalse(conversationsDashboard.isPriorityDeleted(priorityTitle, getWebDriver()));
+                .createActivePriority(title, priorityDescription)
+                .completeActivePriority(title)
+                .deleteCompletedPriority(title);
+        Assert.assertFalse(conversationsDashboard.isClosedPriorityDeleted(title), "isn't deleted");
     }
 }

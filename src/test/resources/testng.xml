@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Firefox suite" verbose="1">
@@ -11,7 +12,7 @@
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="Firefox"/>
         <classes>
-            <class name="Scenarios.CompletePriorityTest"/>
+            <class name="scenarios.CompletePriorityTest"/>
         </classes>
     </test>
 
@@ -24,7 +25,7 @@
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="Firefox"/>
         <classes>
-            <class name="Scenarios.DeletePriorityTest"/>
+            <class name="scenarios.DeletePriorityTest"/>
         </classes>
     </test>
     <test name="Priority complete Test Chrome">
@@ -36,7 +37,7 @@
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="Scenarios.CompletePriorityTest"/>
+            <class name="scenarios.CompletePriorityTest"/>
         </classes>
     </test>
 
@@ -49,7 +50,7 @@
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="Scenarios.DeletePriorityTest"/>
+            <class name="scenarios.DeletePriorityTest"/>
         </classes>
     </test>
 
@@ -62,7 +63,7 @@
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="Edge"/>
         <classes>
-            <class name="Scenarios.CompletePriorityTest"/>
+            <class name="scenarios.CompletePriorityTest"/>
         </classes>
     </test>
 
@@ -75,7 +76,7 @@
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="Edge"/>
         <classes>
-            <class name="Scenarios.DeletePriorityTest"/>
+            <class name="scenarios.DeletePriorityTest"/>
         </classes>
     </test>
 </suite>
