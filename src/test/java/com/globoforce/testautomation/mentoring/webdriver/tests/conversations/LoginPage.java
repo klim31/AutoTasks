@@ -1,4 +1,4 @@
-package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
+package com.globoforce.testautomation.mentoring.webdriver.tests.conversations;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -13,15 +13,15 @@ public class LoginPage extends BasePage {
 
 
     @Name("Username field")
-    @FindBy (css = "input[name='username']")
+    @FindBy(css = "input[name='username']")
     private TextInput username;
 
     @Name("Password field")
-    @FindBy (xpath = "//input[@name='password']")
+    @FindBy(xpath = "//input[@name='password']")
     private TextInput password;
 
     @Name("Log in button")
-    @FindBy (id = "signIn-button")
+    @FindBy(id = "signIn-button")
     private Button logIn;
 
 
@@ -29,37 +29,35 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public LoginPage openLogInScreen(String URL){
+    public LoginPage openLogInScreen(String URL) {
         getDriver().get(URL);
         return new LoginPage(getDriver());
     }
 
-    public LoginPage clearUsername(){
+    public LoginPage clearUsername() {
         username.clear();
         return this;
     }
 
-    public LoginPage insertUsername(String userName){
+    public LoginPage insertUsername(String userName) {
         username.sendKeys(userName);
         return this;
     }
 
-    public LoginPage clearPassword(){
+    public LoginPage clearPassword() {
         password.clear();
         return this;
     }
 
-    public LoginPage insertPassword(String passWord){
+    public LoginPage insertPassword(String passWord) {
         password.sendKeys(passWord);
         return this;
     }
 
-    public HomePage LogIn(){
+    public HomePage LogIn() {
         logIn.click();
         return new HomePage(getDriver());
     }
-
-
 
 
 }

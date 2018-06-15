@@ -1,4 +1,4 @@
-package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
+package com.globoforce.testautomation.mentoring.webdriver.tests.conversations;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -21,11 +21,11 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@data-appname='Conversations']")
     private Link conversationsLink;
 
-    public HomePage (WebDriver driver){
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public HomePage openWaffleMenu(){
+    public HomePage openWaffleMenu() {
         waffleMenu.click();
         return this;
     }
@@ -50,6 +50,6 @@ public class HomePage extends BasePage {
 
         ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(newTab.get(1));
-        return new  ConversationsDashboard(getDriver());
+        return new ConversationsDashboard(getDriver());
     }
 }

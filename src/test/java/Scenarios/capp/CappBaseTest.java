@@ -1,6 +1,5 @@
-package Scenarios;
+package Scenarios.capp;
 
-import com.globoforce.testautomation.mentoring.webdriver.PageFactory.LoginPage;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,11 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Klim_Starykau on 5/23/2018.
- */
-public class BaseTest {
-
+public class CappBaseTest {
     private static WebDriver webDriver;
 
     @BeforeClass
@@ -30,39 +25,25 @@ public class BaseTest {
                 capChrome.setBrowserName(browser);
                 capChrome.setPlatform(Platform.WINDOWS);
                 URL url1 = new URL("http://localhost:4444/wd/hub");
-                webDriver = new RemoteWebDriver(url1,capChrome);
+                webDriver = new RemoteWebDriver(url1, capChrome);
                 break;
             case "firefox":
                 DesiredCapabilities capFF = new DesiredCapabilities();
                 capFF.setBrowserName(browser);
                 capFF.setPlatform(Platform.WINDOWS);
                 URL url2 = new URL("http://10.9.126.13:4444/wd/hub");
-                webDriver = new RemoteWebDriver(url2,capFF);
+                webDriver = new RemoteWebDriver(url2, capFF);
                 break;
             case "edge":
                 DesiredCapabilities capEdge = new DesiredCapabilities();
                 capEdge.setBrowserName(browser);
                 capEdge.setPlatform(Platform.WINDOWS);
                 URL url3 = new URL("http://localhost:4444/wd/hub");
-                webDriver = new RemoteWebDriver(url3,capEdge);
+                webDriver = new RemoteWebDriver(url3, capEdge);
                 break;
         }
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
-    }
-
-    @BeforeClass(dependsOnMethods = "setUp")
-    @Parameters({"username", "password", "URL"})
-    public void loggingIn (String username, String password, String URL){
-         new LoginPage(webDriver)
-                 .openLogInScreen(URL)
-                 .clearPassword()
-                 .clearUsername()
-                 .insertPassword(password)
-                 .insertUsername(username)
-                 .LogIn()
-                 .openWaffleMenu()
-                 .goToConversations(webDriver);
     }
 
     @AfterClass
@@ -78,5 +59,6 @@ public class BaseTest {
     protected WebDriver getWebDriver() {
         return this.webDriver;
     }
+
 
 }

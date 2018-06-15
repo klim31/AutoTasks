@@ -1,5 +1,6 @@
-package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
+package com.globoforce.testautomation.mentoring.webdriver.tests.capp;
 
+import com.globoforce.testautomation.mentoring.webdriver.tests.conversations.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,7 +40,7 @@ public class CappMainPage extends BasePage {
     @FindBy(id = "81904_false")
     private HtmlElement awardToDrop;
 
-    public CappMainPage chooseClient (WebDriver driver){
+    public CappMainPage chooseClient(WebDriver driver) {
         clientLink.click();
         awardsSpan.click();
         awardPrograms.click();
@@ -47,13 +48,11 @@ public class CappMainPage extends BasePage {
         return this;
     }
 
-    public void dragNDrop (WebDriver driver){
+    public void dragNDrop(WebDriver driver) {
         WebElement draggable = driver.findElement(By.xpath("//ul[@class = 'draglist']/li[1]"));
         WebElement droppable = driver.findElement(By.xpath("//ul[@class = 'draglist']/li[3]"));
-        new Actions(driver).dragAndDrop(draggable,droppable).build().perform();
+        new Actions(driver).dragAndDrop(draggable, droppable).build().perform();
     }
-
-
 
 
 }

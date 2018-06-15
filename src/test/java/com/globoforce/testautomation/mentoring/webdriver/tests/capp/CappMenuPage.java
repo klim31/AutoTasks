@@ -1,5 +1,6 @@
-package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
+package com.globoforce.testautomation.mentoring.webdriver.tests.capp;
 
+import com.globoforce.testautomation.mentoring.webdriver.tests.conversations.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,21 +24,19 @@ public class CappMenuPage extends BasePage {
     @FindBy(xpath = "//a[@href='/iaf-config-app/']")
     private Link cappOption;
 
-    public CappMenuPage openDropdown(WebDriver driver){
+    public CappMenuPage openDropdown(WebDriver driver) {
         WebElement draggable = driver.findElement(By.xpath("//a[@class='drop']"));
         new Actions(driver).moveToElement(draggable).build().perform();
         return this;
     }
 
-    public CappMainPage navigateToCapp(WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver,10);
+    public CappMainPage navigateToCapp(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[@href='/iaf-config-app/']")));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/iaf-config-app/']")));
         cappOption.click();
         return new CappMainPage(getDriver());
     }
-
-
 
 
 }

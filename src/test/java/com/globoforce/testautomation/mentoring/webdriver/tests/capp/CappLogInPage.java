@@ -1,5 +1,6 @@
-package com.globoforce.testautomation.mentoring.webdriver.PageFactory;
+package com.globoforce.testautomation.mentoring.webdriver.tests.capp;
 
+import com.globoforce.testautomation.mentoring.webdriver.tests.conversations.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Name;
@@ -24,11 +25,12 @@ public class CappLogInPage extends BasePage {
     @FindBy(xpath = "//input[@class='button']")
     private Button loginButton;
 
-    public CappLogInPage openLoginPage (WebDriver driver, String URL){
+    public CappLogInPage openLoginPage(WebDriver driver, String URL) {
         driver.get(URL);
         return this;
     }
-    public CappMenuPage logIn (String username, String password, WebDriver driver){
+
+    public CappMenuPage logIn(String username, String password, WebDriver driver) {
         loginField.clear();
         loginField.sendKeys(username);
         passwordField.clear();
