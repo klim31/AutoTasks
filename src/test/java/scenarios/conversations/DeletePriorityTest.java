@@ -1,4 +1,4 @@
-package Scenarios.conversations;
+package scenarios.conversations;
 
 import com.globoforce.testautomation.mentoring.webdriver.tests.conversations.ConversationsDashboard;
 import org.testng.Assert;

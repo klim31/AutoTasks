@@ -1,4 +1,4 @@
-package Scenarios.capp;
+package scenarios.capp;
 
 import com.globoforce.testautomation.mentoring.webdriver.tests.capp.CappLogInPage;
 import org.testng.Assert;

@@ -1,4 +1,4 @@
-package Scenarios.capp;
+package scenarios.capp;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;

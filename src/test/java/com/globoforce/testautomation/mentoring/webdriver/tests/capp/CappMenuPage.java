@@ -18,11 +18,11 @@ public class CappMenuPage extends BasePage {
 
     @Name("Apps menu")
     @FindBy(xpath = "//a[@class='drop']")
-    private Link appsDropdown;
+    private Link appsDropdownLink;
 
     @Name("Capp option")
     @FindBy(xpath = "//a[@href='/iaf-config-app/']")
-    private Link cappOption;
+    private Link cappOptionLink;
 
     public CappMenuPage openDropdown(WebDriver driver) {
         WebElement draggable = driver.findElement(By.xpath("//a[@class='drop']"));
@@ -34,7 +34,7 @@ public class CappMenuPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[@href='/iaf-config-app/']")));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/iaf-config-app/']")));
-        cappOption.click();
+        cappOptionLink.click();
         return new CappMainPage(getDriver());
     }
 

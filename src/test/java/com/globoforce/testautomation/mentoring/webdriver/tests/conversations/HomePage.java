@@ -31,21 +31,12 @@ public class HomePage extends BasePage {
     }
 
     public ConversationsDashboard goToConversations(WebDriver driver) {
-        //conversationsLink.click();
-        //String winHandleBefore = driver.getWindowHandle();
         conversationsLink.click();
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*for (String winHandle : driver.getWindowHandles()) {
-            if (!(winHandle.equals(winHandleBefore))) {
-                driver.close();
-                driver.switchTo().window(winHandle);
-            }
-        }
-        return new ConversationsDashboard(driver);*/
 
 
         ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());

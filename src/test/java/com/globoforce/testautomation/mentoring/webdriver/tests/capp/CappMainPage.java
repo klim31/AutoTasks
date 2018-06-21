@@ -22,11 +22,11 @@ public class CappMainPage extends BasePage {
 
     @Name("Awards button")
     @FindBy(id = "ygtvlabelel39")
-    private Button awardsSpan;
+    private Button awardsButton;
 
     @Name("Award Programs")
     @FindBy(id = "ygtvlabelel40")
-    private Button awardPrograms;
+    private Button awardProgramsButton;
 
     @Name("Add/remove")
     @FindBy(xpath = "//tr[@class ='yui-dt-first yui-dt-even']//td[@class = 'yui-dt0-col-manageLevel yui-dt-col-manageLevel']//a[contains(.,'Add/Remove/Sort')]")
@@ -42,8 +42,8 @@ public class CappMainPage extends BasePage {
 
     public CappMainPage chooseClient(WebDriver driver) {
         clientLink.click();
-        awardsSpan.click();
-        awardPrograms.click();
+        awardsButton.click();
+        awardProgramsButton.click();
         addRemoveLink.click();
         return this;
     }

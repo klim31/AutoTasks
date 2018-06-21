@@ -15,11 +15,11 @@ public class CappLogInPage extends BasePage {
 
     @Name("Username field")
     @FindBy(xpath = "//input[@name='j_username']")
-    private TextInput loginField;
+    private TextInput loginInput;
 
     @Name("Password field")
     @FindBy(xpath = "//input[@name='j_password']")
-    private TextInput passwordField;
+    private TextInput passwordInput;
 
     @Name("Login button")
     @FindBy(xpath = "//input[@class='button']")
@@ -31,10 +31,10 @@ public class CappLogInPage extends BasePage {
     }
 
     public CappMenuPage logIn(String username, String password, WebDriver driver) {
-        loginField.clear();
-        loginField.sendKeys(username);
-        passwordField.clear();
-        passwordField.sendKeys(password);
+        loginInput.clear();
+        loginInput.sendKeys(username);
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
         loginButton.click();
         return new CappMenuPage(getDriver());
     }

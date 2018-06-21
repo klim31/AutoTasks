@@ -12,7 +12,7 @@
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="firefox"/>
         <classes>
-            <class name="Scenarios.conversations.CompletePriorityTest"/>
+            <class name="scenarios.conversations.CompletePriorityTest"/>
         </classes>
     </test>
 
@@ -25,7 +25,7 @@
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="firefox"/>
         <classes>
-            <class name="Scenarios.conversations.DeletePriorityTest"/>
+            <class name="scenarios.conversations.DeletePriorityTest"/>
         </classes>
     </test>
     <test name="Priority complete Test Chrome">
@@ -37,7 +37,7 @@
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="chrome"/>
         <classes>
-            <class name="Scenarios.conversations.CompletePriorityTest"/>
+            <class name="scenarios.conversations.CompletePriorityTest"/>
         </classes>
     </test>
 
@@ -50,7 +50,7 @@
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="chrome"/>
         <classes>
-            <class name="Scenarios.conversations.DeletePriorityTest"/>
+            <class name="scenarios.conversations.DeletePriorityTest"/>
         </classes>
     </test>
 
@@ -63,7 +63,7 @@
         <parameter name="priorityDescription" value="KLdescr"/>
         <parameter name="Browser" value="edge"/>
         <classes>
-            <class name="Scenarios.conversations.CompletePriorityTest"/>
+            <class name="scenarios.conversations.CompletePriorityTest"/>
         </classes>
     </test>
 
@@ -76,7 +76,7 @@
         <parameter name="priorityDescription" value="KLdescrDelete"/>
         <parameter name="Browser" value="edge"/>
         <classes>
-            <class name="Scenarios.conversations.DeletePriorityTest"/>
+            <class name="scenarios.conversations.DeletePriorityTest"/>
         </classes>
     </test>
 

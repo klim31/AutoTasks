@@ -1,4 +1,4 @@
-package Scenarios.conversations;
+package scenarios.conversations;
 
 import com.globoforce.testautomation.mentoring.webdriver.tests.conversations.LoginPage;
 import org.openqa.selenium.Platform;
@@ -29,7 +29,7 @@ public class BaseTest {
                 DesiredCapabilities capChrome = new DesiredCapabilities();
                 capChrome.setBrowserName(browser);
                 capChrome.setPlatform(Platform.WINDOWS);
-                URL url1 = new URL("http://localhost:4444/wd/hub");
+                URL url1 = new URL("http://10.9.126.13:4444/wd/hub");
                 webDriver = new RemoteWebDriver(url1, capChrome);
                 break;
             case "firefox":
@@ -43,7 +43,7 @@ public class BaseTest {
                 DesiredCapabilities capEdge = new DesiredCapabilities();
                 capEdge.setBrowserName(browser);
                 capEdge.setPlatform(Platform.WINDOWS);
-                URL url3 = new URL("http://localhost:4444/wd/hub");
+                URL url3 = new URL("http://10.9.126.13:4444/wd/hub");
                 webDriver = new RemoteWebDriver(url3, capEdge);
                 break;
         }
