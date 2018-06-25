@@ -1,5 +1,6 @@
 package com.globoforce.testautomation.mentoring.webdriver.tests.conversations;
 
+import entities.PriorityBO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -45,6 +46,15 @@ public class ConversationsDashboard extends BasePage {
     @FindBy(tagName = "gf-lightbox")
     private HtmlElement lightbox;
 
+    @Name("Edit option")
+    @FindBy(xpath = "//button[@class='dropdown-item'][1]")
+    private Button editPriority;
+
+    @Name("Save edition button")
+    private Button saveEditedPriorityButton;
+
+
+
     private final String ACTIVE_PRIORITY_ITEM_XPATH = "(//div[@class='prioritySection'])[1]//ul[@class='priorityList']//li[@class='priorityList-item']//span[text()='%s']";
 
     private final String CLOSED_PRIORITY_ITEM_XPATH = "(//div[@class='prioritySection'])[2]//ul[@class='priorityList']//li[@class='priorityList-item']//span[text()='%s']";
@@ -53,7 +63,7 @@ public class ConversationsDashboard extends BasePage {
         super(driver);
     }
 
-    public ConversationsDashboard createActivePriority(String priorityTitle, String priorityDescription) {
+    /*public ConversationsDashboard createActivePriority(String priorityTitle, String priorityDescription) {
         waitUntilVisible(addPriority);
         addPriority.click();
         lightboxTitle.clear();
@@ -65,16 +75,60 @@ public class ConversationsDashboard extends BasePage {
         HtmlElement priority = getActivePriorityElement(priorityTitle);
         waitUntilVisible(priority);
         return this;
+    }*/
+
+    public ConversationsDashboard clickAddPriority(){
+        waitUntilVisible(addPriority);
+        addPriority.click();
+        return this;
     }
 
-    public ConversationsDashboard completeActivePriority(String priorityTitle) {
+    public ConversationsDashboard addPriorityTitle(PriorityBO priorityBO){
+        lightboxTitle.clear();
+        lightboxTitle.sendKeys(priorityBO.getTitle());
+        return this;
+    }
+
+    public ConversationsDashboard addPriorityDescription(PriorityBO priorityBO){
+        lightboxDescription.clear();
+        lightboxDescription.sendKeys(priorityBO.getDescription());
+        return this;
+    }
+
+    public ConversationsDashboard createPriorityButtonClick(PriorityBO priorityBO){
+        createPriorityButton.click();
+        waitUntilInVisible(lightbox);
+        return this;
+    }
+
+
+    /*public ConversationsDashboard completeActivePriority(String priorityTitle) {
         HtmlElement priority = getActivePriorityElement(priorityTitle);
         priority.click();
         createPriorityButton.click();
         waitUntilInVisible(lightbox);
         waitUntilInVisible(priority);
         return this;
+    }*/
+
+    public ConversationsDashboard openCreatedPriority(PriorityBO priorityBO){
+        HtmlElement priority = getActivePriorityElement(priorityBO.getTitle());
+        waitUntilVisible(priority);
+        priority.click();
+        return this;
     }
+
+    public ConversationsDashboard editPriorityFromLightbox(){
+        editPriority.click();
+        return this;
+    }
+
+    public ConversationsDashboard saveEditedPriority(){
+        saveEditedPriorityButton.click();
+        return this;
+    }
+
+
 
     public HtmlElement getPriorityElement(String xpath) {
         return getHtmlElement(xpath);
@@ -103,12 +157,31 @@ public class ConversationsDashboard extends BasePage {
         return isElementPresent(By.xpath(priorityXpath));
     }
 
-    public ConversationsDashboard deleteCompletedPriority(String priorityTitle) {
+    /*public ConversationsDashboard deleteCompletedPriority(String priorityTitle) {
         HtmlElement priority = getClosedPriorityElement(priorityTitle);
         priority.click();
         deleteDropdownButton.click();
         deleteOptionButton.click();
         deleteConfirmationButton.click();
         return this;
+    }*/
+
+    public ConversationsDashboard openLightboxDropdown(){
+        deleteDropdownButton.click();
+        return this;
     }
+
+    public ConversationsDashboard chooseDeleteOption(){
+        deleteOptionButton.click();
+        return this;
+    }
+
+    public ConversationsDashboard deleteConfirmation(){
+        deleteConfirmationButton.click();
+        return this;
+    }
+
+
+
+
 }

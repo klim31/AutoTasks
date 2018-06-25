@@ -75,7 +75,7 @@ public class BaseTest {
         webDriver.quit();
     }
 
-    protected WebDriver getWebDriver() {
+    public WebDriver getWebDriver() {
         return this.webDriver;
     }
 
