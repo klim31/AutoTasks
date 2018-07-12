@@ -1,17 +1,17 @@
 package scenarios.conversations;
 
 import com.globoforce.testautomation.mentoring.webdriver.tests.conversations.LoginPage;
-import org.openqa.selenium.Platform;
+import entities.UserBO;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,31 +20,23 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     private static WebDriver webDriver;
+    private UserBO loggedInUser;
 
     @BeforeClass
     @Parameters({"Browser"})
     public static void setUp(@Optional("chrome") String browser) throws MalformedURLException {
         switch (browser) {
-            case "chrome":
-                DesiredCapabilities capChrome = new DesiredCapabilities();
-                capChrome.setBrowserName(browser);
-                capChrome.setPlatform(Platform.WINDOWS);
-                URL url1 = new URL("http://10.9.126.13:4444/wd/hub");
-                webDriver = new RemoteWebDriver(url1, capChrome);
+            case "Chrome":
+                System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\drivers\\chromedriver.exe");
+                webDriver = new ChromeDriver();
                 break;
             case "firefox":
-                DesiredCapabilities capFF = new DesiredCapabilities();
-                capFF.setBrowserName(browser);
-                capFF.setPlatform(Platform.WINDOWS);
-                URL url2 = new URL("http://10.9.126.13:4444/wd/hub");
-                webDriver = new RemoteWebDriver(url2, capFF);
+                System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\drivers\\geckodriver.exe");
+                webDriver = new FirefoxDriver();
                 break;
-            case "edge":
-                DesiredCapabilities capEdge = new DesiredCapabilities();
-                capEdge.setBrowserName(browser);
-                capEdge.setPlatform(Platform.WINDOWS);
-                URL url3 = new URL("http://10.9.126.13:4444/wd/hub");
-                webDriver = new RemoteWebDriver(url3, capEdge);
+            case "Edge":
+                System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\drivers\\MicrosoftWebDriver.exe");
+                webDriver = new EdgeDriver();
                 break;
         }
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -54,12 +46,13 @@ public class BaseTest {
     @BeforeClass(dependsOnMethods = "setUp")
     @Parameters({"username", "password", "URL"})
     public void loggingIn(String username, String password, String URL) {
+        loggedInUser = new UserBO(username, password);
         new LoginPage(webDriver)
                 .openLogInScreen(URL)
                 .clearPassword()
                 .clearUsername()
-                .insertPassword(password)
-                .insertUsername(username)
+                .insertPassword(loggedInUser.getPassword())
+                .insertUsername(loggedInUser.getUsername())
                 .LogIn()
                 .openWaffleMenu()
                 .goToConversations(webDriver);
@@ -75,8 +68,8 @@ public class BaseTest {
         webDriver.quit();
     }
 
-    public WebDriver getWebDriver() {
-        return this.webDriver;
+    public static WebDriver getWebDriver() {
+        return webDriver;
     }
 
 }

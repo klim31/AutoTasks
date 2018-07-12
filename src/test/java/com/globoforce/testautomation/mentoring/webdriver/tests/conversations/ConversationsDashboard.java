@@ -51,6 +51,7 @@ public class ConversationsDashboard extends BasePage {
     private Button editPriority;
 
     @Name("Save edition button")
+    @FindBy(xpath = "//button[@class='btn btn--priority']")
     private Button saveEditedPriorityButton;
 
 

@@ -18,7 +18,7 @@ public class CompletePriorityTest extends BaseTest {
         priorityBO.setTitle(priorityTitle);
         priorityBO.setDescription(priorityDescription);
         priorityService.createPriority(priorityBO);
-        priorityService.isAtivePriotiryCreated(priorityBO);
+        priorityService.isActivePriotiryCreated(priorityBO);
         priorityService.completePriority(priorityBO);
         priorityService.isPriorityCompleted(priorityBO);
     }

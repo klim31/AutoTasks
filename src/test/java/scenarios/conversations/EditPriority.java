@@ -7,22 +7,22 @@ import services.PriorityService;
 
 import java.util.Date;
 
-public class EditPriority {
+public class EditPriority extends BaseTest {
     PriorityService priorityService = new PriorityService();
-    PriorityBO initianPriorityBO = new PriorityBO();
+    PriorityBO initialPriorityBO = new PriorityBO();
     PriorityBO updatedPriorityBO = new PriorityBO();
 
     @Test(description = "CreateAndEditPriority")
-    @Parameters({"priorityTitle", "priorityDescription","updatedPriorityTitle", "updatedPriorityDescription"})
+    @Parameters({"priorityTitle", "priorityDescription", "updatedPriorityTitle", "updatedPriorityDescription"})
     public void createAndCompleteDeletePriority(String priorityTitle, String priorityDescription, String updatedPriorityTitle, String updatedPriorityDescription) {
         String title = priorityTitle + new Date().getTime();
-        initianPriorityBO.setTitle(title);
-        initianPriorityBO.setDescription(priorityDescription);
+        initialPriorityBO.setTitle(title);
+        initialPriorityBO.setDescription(priorityDescription);
         updatedPriorityBO.setTitle(updatedPriorityTitle);
         updatedPriorityBO.setDescription(updatedPriorityDescription);
-        priorityService.createPriority(initianPriorityBO);
-        priorityService.isAtivePriotiryCreated(initianPriorityBO);
-        priorityService.editPriority(updatedPriorityBO);
-        priorityService.isAtivePriotiryCreated(updatedPriorityBO);
+        priorityService.createPriority(initialPriorityBO);
+        priorityService.isActivePriotiryCreated(initialPriorityBO);
+        priorityService.editPriority(initialPriorityBO, updatedPriorityBO);
+        priorityService.isActivePriotiryCreated(updatedPriorityBO);
     }
 }

@@ -12,7 +12,6 @@ public class DeletePriorityTest extends BaseTest {
     PriorityBO priorityBO = new PriorityBO();
 
 
-
     @Test(description = "CreateAndDeletePriority")
     @Parameters({"priorityTitle", "priorityDescription"})
     public void createAndCompleteDeletePriority(String priorityTitle, String priorityDescription) {
@@ -20,7 +19,7 @@ public class DeletePriorityTest extends BaseTest {
         priorityBO.setTitle(title);
         priorityBO.setDescription(priorityDescription);
         priorityService.createPriority(priorityBO);
-        priorityService.isAtivePriotiryCreated(priorityBO);
+        priorityService.isActivePriotiryCreated(priorityBO);
         priorityService.deleteCreatedPriority(priorityBO);
         priorityService.isPriorityDeleted(priorityBO);
     }
