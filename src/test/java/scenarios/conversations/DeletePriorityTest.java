@@ -9,15 +9,17 @@ import java.util.Date;
 
 public class DeletePriorityTest extends BaseTest {
     PriorityService priorityService = new PriorityService();
-    PriorityBO priorityBO = new PriorityBO();
+    PriorityBO priorityBO;
 
 
     @Test(description = "CreateAndDeletePriority")
     @Parameters({"priorityTitle", "priorityDescription"})
     public void createAndCompleteDeletePriority(String priorityTitle, String priorityDescription) {
         String title = priorityTitle + new Date().getTime();
-        priorityBO.setTitle(title);
-        priorityBO.setDescription(priorityDescription);
+        priorityBO = new PriorityBO.Builder()
+                .withTitle(title)
+                .withDescription(priorityDescription)
+                .build();
         priorityService.createPriority(priorityBO);
         priorityService.isActivePriotiryCreated(priorityBO);
         priorityService.deleteCreatedPriority(priorityBO);

@@ -64,19 +64,6 @@ public class ConversationsDashboard extends BasePage {
         super(driver);
     }
 
-    /*public ConversationsDashboard createActivePriority(String priorityTitle, String priorityDescription) {
-        waitUntilVisible(addPriority);
-        addPriority.click();
-        lightboxTitle.clear();
-        lightboxTitle.sendKeys(priorityTitle);
-        lightboxDescription.clear();
-        lightboxDescription.sendKeys(priorityDescription);
-        createPriorityButton.click();
-        waitUntilInVisible(lightbox);
-        HtmlElement priority = getActivePriorityElement(priorityTitle);
-        waitUntilVisible(priority);
-        return this;
-    }*/
 
     public ConversationsDashboard clickAddPriority(){
         waitUntilVisible(addPriority);
@@ -102,15 +89,6 @@ public class ConversationsDashboard extends BasePage {
         return this;
     }
 
-
-    /*public ConversationsDashboard completeActivePriority(String priorityTitle) {
-        HtmlElement priority = getActivePriorityElement(priorityTitle);
-        priority.click();
-        createPriorityButton.click();
-        waitUntilInVisible(lightbox);
-        waitUntilInVisible(priority);
-        return this;
-    }*/
 
     public ConversationsDashboard openCreatedPriority(PriorityBO priorityBO){
         HtmlElement priority = getActivePriorityElement(priorityBO.getTitle());
@@ -158,14 +136,6 @@ public class ConversationsDashboard extends BasePage {
         return isElementPresent(By.xpath(priorityXpath));
     }
 
-    /*public ConversationsDashboard deleteCompletedPriority(String priorityTitle) {
-        HtmlElement priority = getClosedPriorityElement(priorityTitle);
-        priority.click();
-        deleteDropdownButton.click();
-        deleteOptionButton.click();
-        deleteConfirmationButton.click();
-        return this;
-    }*/
 
     public ConversationsDashboard openLightboxDropdown(){
         deleteDropdownButton.click();

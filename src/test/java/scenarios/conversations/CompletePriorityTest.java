@@ -10,13 +10,15 @@ import services.PriorityService;
  */
 public class CompletePriorityTest extends BaseTest {
     PriorityService priorityService = new PriorityService();
-    PriorityBO priorityBO = new PriorityBO();
+    PriorityBO priorityBO;
 
     @Test(description = "CreateAndCompletePriority")
     @Parameters({"priorityTitle", "priorityDescription"})
     public void createAndCompletePriority(String priorityTitle, String priorityDescription) {
-        priorityBO.setTitle(priorityTitle);
-        priorityBO.setDescription(priorityDescription);
+        priorityBO = new PriorityBO.Builder()
+                .withTitle(priorityTitle)
+                .withDescription(priorityDescription)
+                .build();
         priorityService.createPriority(priorityBO);
         priorityService.isActivePriotiryCreated(priorityBO);
         priorityService.completePriority(priorityBO);

@@ -19,4 +19,32 @@ public class PriorityBO {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public static class Builder {
+        private String title;
+        private String description;
+
+        public Builder withTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder withDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public PriorityBO build() {
+            PriorityBO priorityBO = new PriorityBO();
+            priorityBO.title = this.title;
+            priorityBO.description = this.description;
+            return priorityBO;
+        }
+
+
+    }
+
+    private PriorityBO() {
+    }
+
 }
