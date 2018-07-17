@@ -19,10 +19,10 @@ public class CompletePriorityTest extends BaseTest {
                 .withTitle(priorityTitle)
                 .withDescription(priorityDescription)
                 .build();
-        priorityService.createPriority(priorityBO);
-        priorityService.isActivePriotiryCreated(priorityBO);
-        priorityService.completePriority(priorityBO);
-        priorityService.isPriorityCompleted(priorityBO);
+        priorityService.createPriority(priorityBO, getWebDriver());
+        priorityService.isActivePriotiryCreated(priorityBO, getWebDriver());
+        priorityService.completePriority(priorityBO, getWebDriver());
+        priorityService.isPriorityCompleted(priorityBO, getWebDriver());
     }
 
 }

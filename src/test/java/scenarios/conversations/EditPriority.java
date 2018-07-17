@@ -9,8 +9,8 @@ import java.util.Date;
 
 public class EditPriority extends BaseTest {
     PriorityService priorityService = new PriorityService();
-    PriorityBO initialPriorityBO ;
-    PriorityBO updatedPriorityBO ;
+    PriorityBO initialPriorityBO;
+    PriorityBO updatedPriorityBO;
 
     @Test(description = "CreateAndEditPriority")
     @Parameters({"priorityTitle", "priorityDescription", "updatedPriorityTitle", "updatedPriorityDescription"})
@@ -24,9 +24,9 @@ public class EditPriority extends BaseTest {
                 .withTitle(updatedPriorityTitle)
                 .withDescription(updatedPriorityDescription)
                 .build();
-        priorityService.createPriority(initialPriorityBO);
-        priorityService.isActivePriotiryCreated(initialPriorityBO);
-        priorityService.editPriority(initialPriorityBO, updatedPriorityBO);
-        priorityService.isActivePriotiryCreated(updatedPriorityBO);
+        priorityService.createPriority(initialPriorityBO, getWebDriver());
+        priorityService.isActivePriotiryCreated(initialPriorityBO, getWebDriver());
+        priorityService.editPriority(initialPriorityBO, updatedPriorityBO, getWebDriver());
+        priorityService.isActivePriotiryCreated(updatedPriorityBO, getWebDriver());
     }
 }

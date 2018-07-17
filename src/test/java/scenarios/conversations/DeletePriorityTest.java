@@ -20,9 +20,9 @@ public class DeletePriorityTest extends BaseTest {
                 .withTitle(title)
                 .withDescription(priorityDescription)
                 .build();
-        priorityService.createPriority(priorityBO);
-        priorityService.isActivePriotiryCreated(priorityBO);
-        priorityService.deleteCreatedPriority(priorityBO);
-        priorityService.isPriorityDeleted(priorityBO);
+        priorityService.createPriority(priorityBO, getWebDriver());
+        priorityService.isActivePriotiryCreated(priorityBO, getWebDriver());
+        priorityService.deleteCreatedPriority(priorityBO, getWebDriver());
+        priorityService.isPriorityDeleted(priorityBO, getWebDriver());
     }
 }
