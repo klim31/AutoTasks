@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test suite" verbose="1">
+    <test name="WS positive scenario">
+        <parameter name="URL"
+                   value="http://services.groupkt.com/state/get/%s/%s"/>
+        <parameter name="countryCode" value="USA"/>
+        <parameter name="stateCode" value="AL"/>
+        <classes>
+            <class name="scenarios.ws.WsPositiveScenario"/>
+        </classes>
+    </test>
+    <test name="WS negative scenario">
+        <parameter name="URL"
+                   value="http://services.groupkt.com/state/get/%s/%s"/>
+        <parameter name="countryCode" value="USA"/>
+        <parameter name="stateCode" value="XX"/>
+        <classes>
+            <class name="scenarios.ws.WsNegativeScenario"/>
+        </classes>
+    </test>
+</suite>
