@@ -1,6 +1,7 @@
 package scenarios.conversations;
 
 import entities.PriorityBO;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import services.PriorityService;
@@ -23,6 +24,6 @@ public class DeletePriorityTest extends BaseTest {
         priorityService.createPriority(priorityBO, getWebDriver());
         priorityService.isActivePriotiryCreated(priorityBO, getWebDriver());
         priorityService.deleteCreatedPriority(priorityBO, getWebDriver());
-        priorityService.isPriorityDeleted(priorityBO, getWebDriver());
+        Assert.assertFalse(priorityService.isPriorityDeleted(priorityBO, getWebDriver()));
     }
 }

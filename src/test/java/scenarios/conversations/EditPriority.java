@@ -1,6 +1,7 @@
 package scenarios.conversations;
 
 import entities.PriorityBO;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import services.PriorityService;
@@ -27,6 +28,6 @@ public class EditPriority extends BaseTest {
         priorityService.createPriority(initialPriorityBO, getWebDriver());
         priorityService.isActivePriotiryCreated(initialPriorityBO, getWebDriver());
         priorityService.editPriority(initialPriorityBO, updatedPriorityBO, getWebDriver());
-        priorityService.isActivePriotiryCreated(updatedPriorityBO, getWebDriver());
+        Assert.assertTrue(priorityService.isActivePriotiryCreated(updatedPriorityBO, getWebDriver()));
     }
 }
