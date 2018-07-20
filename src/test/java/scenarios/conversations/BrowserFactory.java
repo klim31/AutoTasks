@@ -40,4 +40,7 @@ public class BrowserFactory {
         }
         return instance;
     }
+
+    private BrowserFactory() {
+    }
 }
