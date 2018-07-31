@@ -10,20 +10,21 @@ public class WsPositiveScenario {
 
     WsService wsService = new WsService();
     private static final int status = 200;
+    private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("KLlogger");
 
     @BeforeClass
     @Parameters({"URL", "countryCode", "stateCode"})
     public void sendRequest(String URL, String countryCode, String stateCode) {
         System.out.println("\nPositive case");
         wsService.sendRequest(URL, countryCode, stateCode);
-        System.out.println(wsService.getStatusCode());
+        logger.info("Status code: "+ wsService.getStatusCode());
     }
 
 
     @Test(description = "Verify the response")
     public void verifyResponse() {
         String capitalName = wsService.getResponseParameterValue(wsService.getResponse());
-        System.out.println(capitalName);
+        logger.info(capitalName);
         Assert.assertTrue((wsService.getStatusCode() == status) && (capitalName != null));
     }
 }

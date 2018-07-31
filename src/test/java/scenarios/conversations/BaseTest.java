@@ -3,14 +3,15 @@ package scenarios.conversations;
 import com.globoforce.testautomation.mentoring.webdriver.tests.conversations.LoginPage;
 import entities.UserBO;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
+import utils.CustomListener;
+import utils.ScreenshotUtils;
 
 /**
  * Created by Klim_Starykau on 5/23/2018.
  */
+@Listeners(CustomListener.class)
 public class BaseTest {
 
     private WebDriver webDriver;
@@ -35,6 +36,11 @@ public class BaseTest {
                 .LogIn()
                 .openWaffleMenu()
                 .goToConversations(webDriver);
+    }
+
+    @AfterMethod
+    public void takeScr(ITestResult result) {
+        ScreenshotUtils.captureScreenshot(getWebDriver(), result);
     }
 
     @AfterClass

@@ -4,9 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Listeners;
+import utils.CustomListener;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(CustomListener.class)
 public class BrowserFactory {
 
     private static BrowserFactory instance;

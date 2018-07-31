@@ -9,6 +9,7 @@ import services.WsService;
 public class WsNegativeScenario {
 
     WsService wsService = new WsService();
+    private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("KLlogger");
     private static final int status = 200;
     private static final String expectedMessage = "No matching state found for requested code [USA->%s].";
 
@@ -17,7 +18,7 @@ public class WsNegativeScenario {
     public void sendRequest(String URL, String countryCode, String stateCode) {
         System.out.println("\nNegative case");
         wsService.sendRequest(URL, countryCode, stateCode);
-        System.out.println(wsService.getStatusCode());
+        logger.info("Status code: " + wsService.getStatusCode());
     }
 
 
@@ -26,7 +27,7 @@ public class WsNegativeScenario {
     public void verifyResponse(String stateCode) {
         String formattedError = String.format(expectedMessage, stateCode);
         String actualError = wsService.getResponseErrorMessage(wsService.getResponse());
-        System.out.println(actualError + "\n" + formattedError);
+        logger.info(actualError + "\n" + formattedError);
         Assert.assertTrue((wsService.getStatusCode() == status) && (actualError.equals(formattedError)));
     }
 }
