@@ -2,10 +2,13 @@ package scenarios.ws;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import services.WsService;
+import utils.CustomListener;
 
+@Listeners(CustomListener.class)
 public class WsPositiveScenario {
 
     WsService wsService = new WsService();
